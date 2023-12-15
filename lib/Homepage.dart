@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         '#ff6666', 'Cancel', true, ScanMode.QR);
     print(barcodeScanRes);
+    //Save the textcontroller value in the databse
     setState(() {
       textController.text = barcodeScanRes;
     });
