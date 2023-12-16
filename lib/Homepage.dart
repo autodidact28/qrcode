@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ADMIN-PORTAL'),
+        title: const Text('ADMIN-PORTAL'),
         centerTitle: true,
       ),
       bottomNavigationBar: BottomAppBar(
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               scanBarcodeNormal();
             },
-            child: Icon(Icons.qr_code_scanner),
+            child: const Icon(Icons.qr_code_scanner),
           )
         ]),
       ),

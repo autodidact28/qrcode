@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr/Homepage.dart';
-import 'package:qr/dashboard.dart';
 import 'package:torch_controller/torch_controller.dart';
 
 void main() {
