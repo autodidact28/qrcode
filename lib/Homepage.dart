@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
   TextEditingController textController = new TextEditingController();
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
@@ -16,6 +18,12 @@ class _HomePageState extends State<HomePage> {
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         '#ff6666', 'Cancel', true, ScanMode.QR);
     print(barcodeScanRes);
+    // firebase
+    await _firestore.collection('QRDATA').add({
+      'uniqueID': barcodeScanRes,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+
     //Save the textcontroller value in the databse
     setState(() {
       textController.text = barcodeScanRes;
